@@ -29,8 +29,9 @@ def get_fremont_data(filename="Fremont.csv",url=Fremont_URL
         urlretrieve(url,filename)
     
     data = pd.read_csv("Fremont.csv",index_col = "Date").drop("Fremont Bridge Total",axis=1)
+    
     try: 
-        data.index = pd.to_datetime(data.index, format='%m/%d/%Y %H:%M:%S %p')
+        data.index = pd.to_datetime(data.index, format='%m/%d/%Y %I:%M:%S %p')
 
     except:
         data.index = pd.to_datetime(data.index)
